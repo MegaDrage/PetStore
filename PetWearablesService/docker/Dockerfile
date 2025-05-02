@@ -9,5 +9,5 @@ FROM alpine:3.21.3
 WORKDIR /root/
 COPY --from=builder /app/pet-wearables .
 COPY .env .
-EXPOSE 8080
+EXPOSE 8085
 CMD ["./pet-wearables"]
