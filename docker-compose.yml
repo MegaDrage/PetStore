@@ -1,2 +1,3 @@
 include:
   - PetWearablesService/docker-compose.yml
+  - KongGateway/docker-compose.yml
