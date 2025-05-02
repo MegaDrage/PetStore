@@ -2,13 +2,15 @@ package main
 
 import (
 	"context"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
+	"github.com/MegaDrage/PetStore/PetWearablesService/internal/api"
 	"github.com/MegaDrage/PetStore/PetWearablesService/internal/config"
 	"github.com/MegaDrage/PetStore/PetWearablesService/internal/mqtt"
-	"github.com/MegaDrage/PetStore/PetWearablesService/internal/processor"
 	"github.com/MegaDrage/PetStore/PetWearablesService/internal/storage"
 	"github.com/MegaDrage/PetStore/PetWearablesService/pkg/logger"
 )
@@ -18,33 +20,40 @@ func main() {
 
 	cfg, err := config.Load()
 	if err != nil {
-		logger.Fatal("Error loading configuration:", err)
+		logger.Fatal("Failed to load config", "error", err)
 	}
 
-	store, err := storage.NewInfluxClient(cfg.InfluxDB)
+	influxClient, err := storage.NewInfluxClient(cfg.InfluxDB, logger)
 	if err != nil {
-		logger.Fatal("Error connecting InfluxDB:", err)
+		logger.Fatal("Failed to initialize InfluxDB client", "error", err)
 	}
-	defer store.Close()
+	defer influxClient.Close()
+	
+	handler := mqtt.NewMqttHandler(influxClient, logger)
+	mqttHandler := handler.Handle
 
-	proc := processor.NewProcessor(store, cfg, logger)
-
-	mqttClient, err := mqtt.NewClient(cfg.MQTT, proc.Process, logger)
+	mqttClient, err := mqtt.NewClient(cfg.MQTT, mqttHandler, logger)
 	if err != nil {
-		logger.Fatal("Error intializing MQTT-client:", err)
+		logger.Fatal("Failed to initialize MQTT client, ", "error: ", err)
 	}
 	defer mqttClient.Disconnect(250)
 
-	ctx, cancel := context.WithCancel(context.Background())
-	sigChan := make(chan os.Signal, 1)
-	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+	apiHandler := api.NewHandler(influxClient, logger)
+	server := api.NewServer(":8085", apiHandler, logger)
 
 	go func() {
-		<-sigChan
-		logger.Info("Signal for graceful shutdown")
-		cancel()
+		if err := server.Start(); err != nil && err != http.ErrServerClosed {
+			logger.Fatal("Failed to start server", "error", err)
+		}
 	}()
 
-	<-ctx.Done()
-	logger.Info("Service Stopped Working")
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+	<-sigChan
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if err := server.Shutdown(ctx); err != nil {
+		logger.Error("Failed to shutdown server", "error", err)
+	}
 }

@@ -18,6 +18,9 @@ func NewClient(cfg config.MQTTConfig, handler func([]byte), logger *logger.Logge
 		AddBroker(cfg.Broker).
 		SetClientID(cfg.ClientID).
 		SetDefaultPublishHandler(func(client mqtt.Client, msg mqtt.Message) {
+			logger.Info("Received MQTT message, ",
+				"topic: ", msg.Topic(),
+				", payload: ", string(msg.Payload()))
 			handler(msg.Payload())
 		})
 
@@ -30,13 +33,14 @@ func NewClient(cfg config.MQTTConfig, handler func([]byte), logger *logger.Logge
 	opts.SetMaxReconnectInterval(10 * time.Second)
 
 	opts.SetOnConnectHandler(func(client mqtt.Client) {
-		logger.Info("Success connect to MQTT-brocker")
+		logger.Info("Success connect to MQTT-broker")
 		if token := client.Subscribe("pet/wearables/#", 0, nil); token.Wait() && token.Error() != nil {
 			logger.Error("Resubscribe error:", token.Error())
 		}
 	})
+
 	opts.SetConnectionLostHandler(func(client mqtt.Client, err error) {
-		logger.Warn("Connection with MQTT-brocker ended:", err)
+		logger.Warn("Connection with MQTT-broker ended:", err)
 	})
 
 	client := mqtt.NewClient(opts)

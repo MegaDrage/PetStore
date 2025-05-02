@@ -20,20 +20,20 @@ func NewProcessor(store *storage.InfluxClient, cfg *config.Config, logger *logge
 }
 
 func (p *Processor) Process(payload []byte) {
-	var data models.PetData
+	var data models.CollarMetrics
 	if err := json.Unmarshal(payload, &data); err != nil {
-		p.logger.WithFields(map[string]interface{}{
+		p.logger.WithFields(map[string]any{
 			"error": err.Error(),
 		}).Error("Error decoding data")
 		return
 	}
 
-	p.logger.WithFields(map[string]interface{}{
+	p.logger.WithFields(map[string]any{
 		"pet_id": data.PetID,
 	}).Info("Getting from devices")
 
 	if err := p.store.Save(data); err != nil {
-		p.logger.WithFields(map[string]interface{}{
+		p.logger.WithFields(map[string]any{
 			"pet_id": data.PetID,
 			"error":  err.Error(),
 		}).Error("Error saving data")

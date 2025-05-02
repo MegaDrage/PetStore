@@ -9,6 +9,37 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type loggingResponseWriter struct {
+	http.ResponseWriter
+	statusCode int
+}
+
+func loggingMiddleware(logger *logger.Logger) mux.MiddlewareFunc {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			start := time.Now()
+
+			lrw := &loggingResponseWriter{ResponseWriter: w, statusCode: http.StatusOK}
+			next.ServeHTTP(lrw, r)
+
+			logger.Info(
+				"HTTP request: ",
+				r.Body,
+				", method: ", r.Method,
+				", path: ", r.URL.Path,
+				", remote_addr: ", r.RemoteAddr,
+				", status: ", lrw.statusCode,
+				", duration: ", time.Since(start).String(), 
+			)
+		})
+	}
+}
+
+func (lrw *loggingResponseWriter) WriteHeader(code int) {
+	lrw.statusCode = code
+	lrw.ResponseWriter.WriteHeader(code)
+}
+
 type Server struct {
 	server *http.Server
 	logger *logger.Logger
@@ -16,7 +47,10 @@ type Server struct {
 
 func NewServer(addr string, handler *Handler, logger *logger.Logger) *Server {
 	router := mux.NewRouter()
-	router.HandleFunc("/pets/{pet_id}/metrics", handler.GetPetMetrics).Methods("GET")
+
+	router.Use(loggingMiddleware(logger))
+
+	router.HandleFunc("/api/pets/wearables/{pet_id}/metrics", handler.GetPetMetrics).Methods("GET")
 
 	server := &http.Server{
 		Addr:         addr,
