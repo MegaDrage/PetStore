@@ -1,0 +1,341 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SimpleDay', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.scale-wrapper {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: 0 0;
+    background: white;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 156px;
+    height: 156px;
+    object-fit: contain;
+}
+
+.logo-text {
+    text-align: left;
+}
+
+.clinic-name {
+    font-size: 48px;
+    color: #540032;
+    text-shadow: 0 4px 4px rgba(101, 8, 68, 0.25);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact {
+    font-size: 48px;
+    text-align: right;
+}
+
+.contact p {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-icon {
+    width: 100px;
+    height: 101px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: ruby;
+    justify-content: flex-start;
+    background-color: #540032;
+    padding: 26px 0px;
+    margin-bottom: 38px;
+    border-radius: 5px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 11px 14px;
+    border-radius: 3px;
+}
+
+.main-nav {
+    position: absolute;
+    top: 1%;
+    width: 100%;
+}
+.nav-icon {
+    background: url('../icons/1946488.png') center/contain no-rep
+}
+
+.menu-container {
+    left: 50%;
+    top: 0;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-content: flex-start;
+    flex-direction: column;
+    font-size: 25px;
+    color: #540032;
+    flex-wrap: wrap;
+}
+.nav-back {
+    position: initial;
+    left: -1%;
+    top: 0%;
+    list-style: none;
+    padding: 25px;
+}
+
+.nav-back li a {
+    FONT-VARIANT: JIS83;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 3vw;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.nav-list li a {
+    FONT-VARIANT: JIS83;
+    text-decoration: none;
+    color: #540032;
+    font-size: 1.5vw;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #B42D30;
+}
+.trala {
+     flex: 1;
+     height: 10px;
+     overflow-y: auto;
+     margin: 10px;
+     border: 2px;
+}
+
+.analysis {
+    color: white;
+     flex: 1;
+     padding: 30px;
+     border-radius: 50px;
+     background: #540032;
+     overflow-y: auto;
+     margin: 10px;
+     border: 2px;
+}
+
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.pdf-button {
+    background: #B42D30;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background 0.3s ease;
+}
+
+.pdf-button:hover {
+    background: #9C2426;
+}
+
+.pdf-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.analysis-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.analysis-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.analysis-type {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.analysis-date {
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+}
+
+.ai-summary {
+    font-size: 22px;
+}
+
+.indicators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.indicator {
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.indicator.good { background: #4CAF50; }
+.indicator.warning { background: #FFC107; color: #333; }
+.indicator.bad { background: #F44336; }
+
+.dynamics-graph img {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid white;
+}
+
+@font-face {
+    font-family: 'SimpleDay';
+    src: url('../fonts/SimpleDay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MultiroundPro';
+    src: url('../fonts/MultiroundPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@media (max-width: 768px) {
+    .content-row,
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .clinic-name {
+        font-size: 36px;
+    }
+    
+    .contact p {
+        font-size: 18px;
+    }
+    .card-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .analysis-header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .pdf-button {
+        font-size: 20px;
+        padding: 12px 25px;
+    }
+}

@@ -1,0 +1,387 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SimpleDay', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.scale-wrapper {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: 0 0;
+    background: white;
+}
+
+/* Ð¥ÐµÐ´ÐµÑ€ */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 156px;
+    height: 156px;
+    object-fit: contain;
+}
+
+.logo-text {
+    text-align: left;
+}
+
+.clinic-name {
+    font-size: 48px;
+    color: #540032;
+    text-shadow: 0 4px 4px rgba(101, 8, 68, 0.25);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact {
+    font-size: 48px;
+    text-align: right;
+}
+
+.contact p {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-icon {
+    width: 100px;
+    height: 101px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: ruby;
+    justify-content: flex-start;
+    background-color: #540032;
+    padding: 26px 0px;
+    margin-bottom: 38px;
+    border-radius: 5px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 11px 14px;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background-color: #3e0024;
+}
+.main-nav {
+    position: absolute;
+    top: 1%;
+    width: 100%;
+}
+.nav-icon {
+    background: url('../icons/1946488.png') center/contain no-rep
+
+}
+
+.nav-rectangle {
+    width: 40vw;
+    height: 100px;
+    background: #540032;
+    border-radius: 0 90px 90px 0;
+}
+
+.menu-container {
+    left: 50%;
+    top: 0;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-content: flex-start;
+    flex-direction: column;
+    font-size: 25px;
+    color: #540032;
+    flex-wrap: wrap;
+}
+.nav-back {
+    position: initial;
+    left: -1%;
+    top: 0%;
+    list-style: none;
+    padding: 25px;
+}
+
+ul.nav-back {}
+.nav-back li a {
+    FONT-VARIANT: JIS83;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 3vw;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.nav-list li a {
+    FONT-VARIANT: JIS83;
+    text-decoration: none;
+    color: #540032;
+    font-size: 1.5vw;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #B42D30;
+}
+.trala {
+     flex: 1;
+     height: 10px;
+     overflow-y: auto;
+     margin: 10px;
+     border: 2px;
+}
+.appointment-section{
+     flex: 1;
+     padding: 30px;
+     border-radius: 50px;
+     background: #540032;
+     overflow-y: auto;
+     margin: 10px;
+     border: 2px;
+}
+
+.appointment-rectangle {
+    width: 100%;
+    height: 70%;
+    background: #3F102B;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-title {
+    /* top: 4.5%; */
+    /* left: 2.5%; */
+    position: initial;
+    color: #ffffff;
+    font-size: 25px;
+    margin: 0;
+    text-transform: uppercase;
+    /* color: white; */
+}
+
+.appointment-form {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    /* align-items: flex-end; */
+    flex-wrap: wrap;
+}
+
+.form-column {
+    display: flex;
+    gap: 0vh;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-direction: row;
+}
+
+.form-label {
+    color: #ffffff;
+    font-size: 30px;
+    /* font-weight: 100; */
+}
+
+.select-container {
+    position: relative;
+    /* width: 100%; */
+}
+
+.form-select {
+    width: 100%;
+    height: 75px;
+    padding: 0px 1vw;
+    border: 3px solid white;
+    border-radius: 15px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 30px;
+    appearance: none;
+}
+
+.form-select option {
+    color: #540032;
+    background-color: #F5E6E8;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url('../images/dropdown.png') center/contain no-repeat;
+    pointer-events: none;
+}
+
+.form-input {
+    width: 100%;
+    height: 75px;
+    padding: 0px 1vw;
+    border: 3px solid white;
+    border-radius: 15px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.submit-section {
+    display: flex;
+    gap: 0vh;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    flex-direction: row;
+}
+
+.submit-button {
+    /* display: block; */
+    align-items: center;
+    justify-content: center;
+    /* gap: revert; */
+    width: 200px;
+    height: 100px;
+    background: #B42D30;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Multiround Pro';
+    font-size: 40px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.submit-button:hover {
+    background: #9C2426;
+}
+
+.button-icon {
+    width: 0vw;
+    height: 0vw;
+    /*background: url('submit-icon.svg') center/contain no-repeat;*/
+}
+
+.additional-icons {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    display: flex;
+    gap: 1.5vw;
+}
+
+@font-face {
+    font-family: 'SimpleDay';
+    src: url('../fonts/SimpleDay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MultiroundPro';
+    src: url('../fonts/MultiroundPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@media (max-width: 768px) {
+    .content-row,
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .clinic-name {
+        font-size: 36px;
+    }
+    
+    .contact p {
+        font-size: 18px;
+    }
+    
+    nav a {
+        font-size: 18px;
+    }
+}
