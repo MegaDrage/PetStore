@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+</head>
+<body>
+    <div>
+        <input type="text" id="sessionId" placeholder="Session ID">
+        <button onclick="joinSession()">Join Session</button>
+    </div>
+    
+    <div id="chatInterface" style="display: none;">
+        <input type="text" id="messageInput" placeholder="Message">
+        <button onclick="sendMessage()">Send</button>
+        <input type="file" id="fileInput">
+        <button onclick="uploadFile()">Upload File</button>
+        <div id="messages" style="margin-top: 20px;"></div>
+    </div>
+
+<script>
+let connection;
+let currentSessionId;
+
+// Подключение к сессии
+async function joinSession() {
+    const sessionId = document.getElementById('sessionId').value;
+    
+    // Создаем новую сессию если поле пустое
+    if (!sessionId) {
+        const response = await fetch('/chat/sessions', { method: 'POST' });
+        currentSessionId = await response.text();
+        document.getElementById('sessionId').value = currentSessionId;
+    } else {
+        currentSessionId = sessionId;
+    }
+
+    // Настройка SignalR
+    connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    // Обработчики сообщений
+    connection.on("ReceiveMessage", (message) => {
+        addMessageToScreen(message);
+    });
+
+    connection.on("ReceiveHistory", (messages) => {
+        messages.forEach(addMessageToScreen);
+    });
+
+    // Запуск подключения
+    await connection.start();
+    await connection.invoke("JoinSession", currentSessionId);
+    
+    document.getElementById('chatInterface').style.display = 'block';
+}
+
+// Отправка текстового сообщения
+async function sendMessage() {
+    const input = document.getElementById('messageInput');
+    await connection.invoke("SendMessage", currentSessionId, input.value);
+    input.value = '';
+}
+
+// Загрузка файла
+async function uploadFile() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    
+    // Вариант 1: Через SignalR
+    const reader = new FileReader();
+    reader.onload = async () => {
+        const fileId = await connection.invoke("SendFile", currentSessionId, file.name, new Uint8Array(reader.result));
+        await connection.invoke("SendMessage", currentSessionId, `File uploaded: ${file.name}`, fileId);
+    };
+    reader.readAsArrayBuffer(file);
+
+    // Вариант 2: Через HTTP API
+    /*
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    const response = await fetch(`/chat/sessions/${currentSessionId}/files`, {
+        method: 'POST',
+        body: formData
+    });
+    
+    const fileId = await response.text();
+    await connection.invoke("SendMessage", currentSessionId, `File uploaded: ${file.name}`, fileId);
+    */
+}
+
+// Отображение сообщений
+function addMessageToScreen(message) {
+    const messagesDiv = document.getElementById('messages');
+    const messageElement = document.createElement('div');
+    
+    let content = `${message.sender}: ${message.text}`;
+    if(message.fileId) {
+        content += ` <a href="/chat/sessions/${currentSessionId}/files/${message.fileId}" 
+                       target="_blank">(Download ${message.fileId})</a>`;
+    }
+    
+    messageElement.innerHTML = content;
+    messagesDiv.appendChild(messageElement);
+}
+</script>
+</body>
+</html>

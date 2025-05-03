@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Test</title>
+    <style>
+        #messages {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .message {
+            margin: 5px 0;
+        }
+        .system-message {
+            color: #666;
+            font-style: italic;
+        }
+        #chatSection {
+            display: none;
+        }
+        input, button {
+            margin: 5px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="status" style="color: gray; margin: 10px;">Connecting to server...</div>
+
+    <div id="connectSection">
+        <h3>Join Chat</h3>
+        <input type="text" id="userInput" placeholder="Your name">
+        <input type="text" id="sessionInput" placeholder="Session ID">
+        <button id="joinButton" onclick="joinChat()" disabled>Join Chat</button>
+    </div>
+
+    <div id="chatSection">
+        <h3>Chat</h3>
+        <div id="messages"></div>
+        <input type="text" id="messageInput" placeholder="Type your message">
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="leaveChat()" style="margin-left: 10px;">Leave Chat</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script>
+        let connection = null;
+        let currentSessionId = null;
+        let currentUser = null;
+
+        // Инициализация подключения
+        async function initializeConnection() {
+            connection = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:80/chatHub")
+                .withAutomaticReconnect()
+                .build();
+
+            // Обработчики событий
+            connection.on("ReceiveMessage", (sender, message) => {
+                addMessageToChat(sender, message);
+            });
+
+            connection.on("ChatClosed", () => {
+                addSystemMessage("Chat closed by doctor!");
+                resetUI();
+            });
+
+            connection.on("UserJoined", (userId) => {
+                if(userId !== currentUser) {
+                    addSystemMessage(`${userId} joined the chat`);
+                }
+            });
+
+            connection.onreconnecting(() => {
+                updateStatus("Reconnecting...", "orange");
+            });
+
+            connection.onreconnected(() => {
+                updateStatus("Connected", "green");
+            });
+
+            try {
+                await connection.start();
+                document.getElementById("joinButton").disabled = false;
+                updateStatus("Connected", "green");
+            } catch (err) {
+                console.error("Connection error:", err);
+                updateStatus("Connection failed", "red");
+            }
+        }
+
+        // Функции интерфейса
+        function updateStatus(text, color) {
+            const statusElement = document.getElementById("status");
+            statusElement.textContent = text;
+            statusElement.style.color = color;
+        }
+
+        async function joinChat() {
+            if (connection.state !== signalR.HubConnectionState.Connected) {
+                alert("Connection not ready!");
+                return;
+            }
+
+            currentSessionId = document.getElementById("sessionInput").value;
+            currentUser = document.getElementById("userInput").value;
+
+            if (!currentSessionId || !currentUser) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            try {
+                await connection.invoke("JoinChat", currentSessionId, currentUser);
+                showChatInterface();
+                addSystemMessage("You joined the chat");
+            } catch (err) {
+                alert("Join error: " + err);
+                console.error("Join error:", err);
+            }
+        }
+
+        function showChatInterface() {
+            document.getElementById("connectSection").style.display = "none";
+            document.getElementById("chatSection").style.display = "block";
+            document.getElementById("messageInput").focus();
+        }
+
+        function addMessageToChat(sender, message) {
+            const msgElement = document.createElement("div");
+            msgElement.className = "message";
+            msgElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            document.getElementById("messages").appendChild(msgElement);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function addSystemMessage(message) {
+            const msgElement = document.createElement("div");
+            msgElement.className = "system-message";
+            msgElement.textContent = `System: ${message}`;
+            document.getElementById("messages").appendChild(msgElement);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        async function sendMessage() {
+            if (connection.state !== signalR.HubConnectionState.Connected) {
+                alert("Connection lost!");
+                return;
+            }
+
+            const message = document.getElementById("messageInput").value.trim();
+            if (!message) return;
+
+            try {
+                await connection.invoke("SendMessage", currentSessionId, currentUser, message);
+                document.getElementById("messageInput").value = "";
+            } catch (err) {
+                alert("Send error: " + err);
+                console.error("Send error:", err);
+            }
+        }
+
+        function leaveChat() {
+            resetUI();
+            addSystemMessage("You left the chat");
+        }
+
+        function resetUI() {
+            currentSessionId = null;
+            currentUser = null;
+            document.getElementById("connectSection").style.display = "block";
+            document.getElementById("chatSection").style.display = "none";
+            document.getElementById("messages").innerHTML = "";
+        }
+
+        // Запуск при загрузке страницы
+        initializeConnection();
+    </script>
+</body>
+</html>
