@@ -100,11 +100,11 @@ header {
 
 .profil {
     cursor: pointer;
-    /* Дополнительные стили по необходимости */
+    /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 }
 
 .profile-icon {
-    width: 80px; /* Настройте размер по вашему вкусу */
+    width: 80px; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
     height: 60px;
     transition: transform 0.3s ease;
     max-height: 100%;
@@ -112,7 +112,7 @@ header {
 }
 
     .profile-icon:hover {
-        transform: scale(1.1); /* Эффект при наведении */
+        transform: scale(1.1); /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     }
 
 
@@ -120,9 +120,9 @@ header {
 .pets-header {
     max-width: var(--max-site-width);
     /*margin: 0 auto;*/
-    padding: 0 24px 20px 24px; /* Отступ снизу 20px перед списком */
+    padding: 0 24px 20px 24px; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 20px пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     display: flex;
-    justify-content: flex-start; /* Выравниваем по левому краю */
+    justify-content: flex-start; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 }
 
 /**/
@@ -146,7 +146,7 @@ header {
 .home-button {
     display: inline-flex;
     gap: 8px;
-    padding: 12px 16px; /* Увеличено padding для лучшего вертикального выравнивания */
+    padding: 12px 16px; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ padding пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     background-color: #6E0149;
     color: white;
     text-decoration: none;
@@ -154,8 +154,8 @@ header {
     font-weight: 600;
     font-size: 16px;
     transition: background-color 0.3s;
-    height: fit-content; /* Чтобы кнопка занимала нужную высоту */
-    align-items: center; /* Выравнивание содержимого по вертикали */
+    height: fit-content; /* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    align-items: center; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 }
 /*
 .home-button {
@@ -180,7 +180,7 @@ header {
     height: 30px;
     object-fit: contain;
     
-    filter: drop-shadow(0 0 0 #fff) /* Создаём белый контур */
+    filter: drop-shadow(0 0 0 #fff) /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
     brightness(0) invert(1);
 }
 
@@ -394,7 +394,7 @@ header {
     }
 
       /*  .section-list li:before {  /*???* /
-            content: "•";
+            content: "пїЅ";
             color: #DA2DA0;
             position: absolute;
             left: 0;
@@ -404,6 +404,10 @@ header {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.right-column a {
+    text-decoration: none;
 }
 
 .appointment-button {
@@ -611,7 +615,7 @@ header {
     }
 
         .section-list li:before {
-            content: "•";
+            content: "пїЅ";
             color: #DA2DA0;
             position: absolute;
             left: 0;
