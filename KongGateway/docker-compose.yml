@@ -28,8 +28,6 @@ services:
       - kong_prefix_vol:/var/run/kong
       - kong_tmp_vol:/tmp
       - ./config:/opt/kong
-    secrets:
-      - kong_postgres_password
     networks:
       - kong-network
       - pet-wearables-network
