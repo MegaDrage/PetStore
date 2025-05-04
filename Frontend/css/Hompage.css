@@ -1,0 +1,356 @@
+@font-face {
+    font-family: 'SimpleDay';
+    src: url('../assets/fonts/SimpleDay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SimpleDay', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 156px;
+    height: 156px;
+    object-fit: contain;
+}
+
+.logo-text {
+    text-align: left;
+}
+
+.clinic-name {
+    font-size: 48px;
+    color: #540032;
+    text-shadow: 0 4px 4px rgba(101, 8, 68, 0.25);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact {
+    font-size: 48px;
+    text-align: right;
+}
+
+.contact p {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-icon {
+    width: 100px;
+    height: 101px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #540032;
+    padding: 5px 0;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #3e0024;
+}
+
+.content-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.donation-banner {
+    flex: 1;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+    height: 400px;
+}
+
+.donation-banner:hover {
+    transform: translateY(-5px);
+}
+
+.donation-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.donation-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(84, 0, 50, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.donation-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.donation-text p {
+    font-size: 18px;
+}
+
+.news-section {
+    flex: 1;
+    padding: 30px;
+    border-radius: 50px;
+    background: linear-gradient(to bottom, #AA4C83, #DFBCD1, #F4E8EF, #FFFFFF);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    height: 400px;
+    overflow-y: auto;
+    margin: 10px;
+    border: 2px solid rgba(84, 0, 50, 0.2);
+    
+    /* Скрываем скроллбар */
+    scrollbar-width: none; /* Для Firefox */
+    -ms-overflow-style: none; /* Для IE и Edge */
+}
+
+/* Скрываем скроллбар для WebKit браузеров */
+.news-section::-webkit-scrollbar {
+    display: none;
+}
+
+.news-section h2 {
+    color: #FFFFFF; /* Белый цвет текста */
+    margin-bottom: 25px;
+    font-size: 24px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.3); /* Белая пунктирная линия */
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень для лучшей читаемости */
+}
+
+.news-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed rgba(84, 0, 50, 0.2);
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateX(5px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.news-date {
+    font-weight: bold;
+    color: #540032;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.news-text {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.maps-reviews-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.map-section, 
+.reviews-section {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.map-section h2,
+.reviews-section h2 {
+    color: #540032;
+    margin-bottom: 20px;
+    font-size: 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.map-container,
+.reviews-container {
+    height: 500px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.map-link {
+    color: #eee;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.second-link {
+    top: 14px;
+}
+
+.map-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+}
+
+.reviews-container {
+    background: #f8f8f8;
+}
+
+.reviews-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.yandex-link {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #b3b3b3;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    padding: 0 20px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-height: 14px;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .content-row,
+    .maps-reviews-container {
+        flex-direction: column;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .donation-banner,
+    .news-section,
+    .map-section,
+    .reviews-section {
+        width: 100%;
+    }
+    
+    .clinic-name {
+        font-size: 36px;
+    }
+    
+    .contact p {
+        font-size: 18px;
+    }
+    
+    nav a {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ветеринарная клиника ПИКМИ</title>
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/Hompage.css">
+</head>
+<body><div class="container">
+    <header>
+        <div class="logo-container">
+            <img src="assets/images/clinic_logo.png" alt="Логотип клиники" class="logo-img">
+            <div class="logo-text">
+                <div class="clinic-name">ВЕТЕРИНАРНАЯ<br>КЛИНИКА<br>ПИКМИ</div>
+            </div>
+        </div>
+        <div class="contact-container">
+            <div class="contact">
+                <p>+7(913)6662233</p>
+                <p>ул. Гурьевская 51</p>
+            </div>
+            <a href="#"><img src="./forum-list_files/profile_icon.png" alt="Профиль" class="profile-icon"></a>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="appointment.html">Записаться</a>
+        <a href="my_pets.html">Мои питомцы</a>
+        <a href="forum-list.html">Наше сообщество</a>
+        <a href="chat.html">Консультация</a>
+    </nav>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <span>ЧАТ С ДОКТОРОМ</span>
+            <button class="call-btn" title="Позвонить доктору"></button>
+        </div>
+        
+        <div class="chat-messages">
+
+        </div>
+
+        <div class="chat-input">
+            <input type="text" placeholder="Введите сообщение...">
+            <button class="attach-button" title="Прикрепить файл">
+                <img src="assets/images/attach_button.png" alt="Прикрепить">
+            </button>
+            <button class="send-button" title="Отправить">→</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно видеозвонка -->
+<!-- Модальное окно видеозвонка -->
+<div id="videoCallModal" class="video-call-modal">
+    <div class="video-call-container">
+        <div class="video-grid">
+            <div class="video-container">
+                <video id="localVideo" autoplay muted></video>
+                <div class="video-label">Вы</div>
+            </div>
+            <div class="video-container">
+                <video id="remoteVideo" autoplay></video>
+                <div class="video-label">Доктор</div>
+            </div>
+        </div>
+        <div class="call-controls">
+            <button id="endCallBtn" class="call-control-btn end-call-btn">
+                <img src="assets/images/call_end.png" alt="Завершить">
+            </button>
+            <button id="toggleMicBtn" class="call-control-btn">
+                <img src="assets/images/mic_on.png" alt="Микрофон">
+            </button>
+            <button id="toggleCameraBtn" class="call-control-btn">
+                <img src="assets/images/camera_on.png" alt="Камера">
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/video_call.js"></script>
+
+</div></body>
+</html>
