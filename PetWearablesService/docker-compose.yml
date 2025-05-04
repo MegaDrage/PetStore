@@ -1,0 +1,58 @@
+services:
+  influxdb:
+    image: influxdb:${INFLUXDB_VERSION}
+    container_name: influxdb
+    ports:
+      - "${INFLUXDB_PORT}:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=${INFLUXDB_INIT_MODE}
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_INIT_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_INIT_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_INIT_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_INIT_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_INIT_ADMIN_TOKEN}
+      - DOCKER_INFLUXDB_INIT_RETENTION=2d
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    networks:
+      - pet-wearables-network
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mqtt-server
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./docker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./docker/mosquitto:/etc/mosquitto
+    networks:
+      - pet-wearables-network 
+  pet-wearables:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: pet-wearables
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    environment:
+      - MQTT_BROKER=${MQTT_BROKER}
+      - MQTT_CLIENT_ID=${MQTT_CLIENT_ID}
+      - MQTT_USERNAME=${MQTT_USERNAME}
+      - MQTT_PASSWORD=${MQTT_PASSWORD}
+      - INFLUXDB_URL=${INFLUXDB_URL}
+      - INFLUXDB_TOKEN=${INFLUXDB_INIT_ADMIN_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_INIT_ORG}
+      - INFLUXDB_BUCKET=${INFLUXDB_INIT_BUCKET}
+      - PROFILE_SERVICE_URL=${PROFILE_SERVICE_URL}
+      - LOG_LEVEL=${LOG_LEVEL}
+    networks:
+      - pet-wearables-network
+
+networks:
+  pet-wearables-network:
+    driver: bridge
+    external: true
+  
+volumes:
+  influxdb-data:

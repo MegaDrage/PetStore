@@ -1,0 +1,26 @@
+_format_version: "3.0"
+
+services:
+  - name: pet-wearables
+    url: http://pet-wearables:8085
+    routes:
+      - name: pet-wearables-route
+        paths:
+          - /api/pets/wearables/
+        strip_path: false
+    plugins:
+      - name: rate-limiting
+        config:
+          second: 5
+          hour: 1000
+      # - name: jwt
+      #   config:
+      #     key_claim_name: iss
+      #     secret_is_base64: false
+
+consumers:
+  - username: pet-client
+    custom_id: pet-client-id
+    # jwt_secrets:
+    #   - key: pet-client-key
+    #     secret: pet-client-secret
