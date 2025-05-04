@@ -68,3 +68,7 @@ services:
     App\MedCard\Controller\UpdateMedCard:
         public: true
         tags: [ 'controller.service_arguments' ]
+
+    App\Pet\Controller\Page:
+        public: true
+        tags: [ 'controller.service_arguments' ]

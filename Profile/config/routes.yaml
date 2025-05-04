@@ -7,3 +7,8 @@ card_controllers:
     resource: '../src/MedCard/Controller/'
     type: attribute
     prefix: /card
+
+site_controllers:
+    resource: '../src/Site/Controller/'
+    type: attribute
+    prefix: /

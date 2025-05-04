@@ -286,7 +286,7 @@ nav a {
 
 @font-face {
     font-family: 'SimpleDay';
-    src: url('../assets/fonts/SimpleDay.ttf') format('truetype');
+    src: url('../../../Frontend/assets/fonts/SimpleDay.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -294,7 +294,7 @@ nav a {
 
 @font-face {
     font-family: 'MultiroundPro';
-    src: url('../assets/fonts/MultiroundPro.otf') format('opentype');
+    src: url('../../../Frontend/assets/fonts/MultiroundPro.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
