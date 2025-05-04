@@ -24,3 +24,6 @@ go.work
 
 # Apple files
 .DS_Store
+
+# PASSWD
+passwd
