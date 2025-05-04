@@ -45,6 +45,15 @@ header {
     padding-bottom: 0;
 }
 
+header a {
+    color: #540032;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: darkred;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
