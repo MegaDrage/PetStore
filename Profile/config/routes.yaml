@@ -1,0 +1,9 @@
+pet_controllers:
+    resource: '../src/Pet/Controller/'
+    type: attribute
+    prefix: /pet
+
+card_controllers:
+    resource: '../src/MedCard/Controller/'
+    type: attribute
+    prefix: /card

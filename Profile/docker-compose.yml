@@ -1,0 +1,38 @@
+services:
+  profile-php:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: profile-php
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "${APP_PORT}:8000"
+    env_file:
+      - .env
+    depends_on:
+      - profile-db
+    networks:
+      - profiles-service-network
+
+  profile-db:
+    image: mongo:8.0.9
+    container_name: profile-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "${MONGO_PORT}:27017"
+    networks:
+      - profiles-service-network
+
+volumes:
+  mongo_data:
+
+networks:
+  profiles-service-network:
+    driver: bridge
+    external: true
