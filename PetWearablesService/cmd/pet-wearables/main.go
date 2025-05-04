@@ -38,7 +38,7 @@ func main() {
 	}
 	defer mqttClient.Disconnect(250)
 
-	apiHandler := api.NewHandler(influxClient, logger)
+	apiHandler := api.NewHandler(influxClient, *mqttClient, logger)
 	server := api.NewServer(":8085", apiHandler, logger)
 
 	go func() {

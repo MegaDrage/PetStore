@@ -45,7 +45,7 @@ func NewClient(cfg config.MQTTConfig, handler func([]byte), logger *logger.Logge
 
 	client := mqtt.NewClient(opts)
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
-		logger.Error("Error connecting MQTT:", token.Error())
+		logger.Error("Error connecting MQTT: ", token.Error())
 		return nil, token.Error()
 	}
 
@@ -60,4 +60,12 @@ func NewClient(cfg config.MQTTConfig, handler func([]byte), logger *logger.Logge
 func (c *Client) Disconnect(quiesce uint) {
 	c.logger.Info("Disconnect from MQTT")
 	c.client.Disconnect(quiesce)
+}
+
+func (c *Client) Publish(topic string, payload any) error {
+	token := c.client.Publish(topic, 0, false, payload)
+	if token.Wait() && token.Error() != nil {
+		return token.Error()
+	}
+	return nil
 }

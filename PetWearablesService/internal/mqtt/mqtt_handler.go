@@ -23,19 +23,15 @@ func NewMqttHandler(influxClient *storage.InfluxClient, logger *logger.Logger) *
 func (h *MqttHandler) Handle(payload []byte) {
 	var metrics models.CollarMetrics
 	if err := json.Unmarshal(payload, &metrics); err != nil {
-		h.logger.Error("Failed to parse MQTT payload", "error", err)
+		h.logger.Error("Failed to parse MQTT payload, ", "error: ", err)
 		return
 	}
 
 	data := models.CollarMetrics{
 		PetID:       metrics.PetID,
-		CollarID:    metrics.CollarID,
 		Temperature: metrics.Temperature,
 		HeartRate:   metrics.HeartRate,
-		Location: struct {
-			Lat float64 `json:"lat"`
-			Lon float64 `json:"lon"`
-		}{
+		Location: models.Location {
 			Lat: metrics.Location.Lat,
 			Lon: metrics.Location.Lon,
 		},
@@ -43,7 +39,7 @@ func (h *MqttHandler) Handle(payload []byte) {
 	}
 
 	if err := h.influxClient.Save(data); err != nil {
-		h.logger.Error("Failed to save MQTT data", "error", err, "pet_id", metrics.CollarID)
+		h.logger.Error("Failed to save MQTT data, ", "error: ", err, ", pet_id: ", metrics.PetID)
 		return
 	}
 }

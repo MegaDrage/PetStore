@@ -11,7 +11,7 @@ services:
       - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_INIT_ORG}
       - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_INIT_BUCKET}
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_INIT_ADMIN_TOKEN}
-      - DOCKER_INFLUXDB_INIT_RETENTION=1d
+      - DOCKER_INFLUXDB_INIT_RETENTION=2d
     volumes:
       - influxdb-data:/var/lib/influxdb2
     networks:
@@ -46,22 +46,6 @@ services:
       - INFLUXDB_BUCKET=${INFLUXDB_INIT_BUCKET}
       - PROFILE_SERVICE_URL=${PROFILE_SERVICE_URL}
       - LOG_LEVEL=${LOG_LEVEL}
-    networks:
-      - pet-wearables-network
-  collar-simulator:
-    build:
-      context: .
-      dockerfile: docker/simulate_collar/Dockerfile
-    container_name: collar-simulator
-    restart: unless-stopped
-    depends_on:
-      - mosquitto
-      - pet-wearables
-    environment:
-      - MQTT_BROKER=${MQTT_BROKER}
-      - MQTT_CLIENT_ID=${MQTT_CLIENT_ID}
-      - MQTT_USERNAME=${MQTT_USERNAME}
-      - MQTT_PASSWORD=${MQTT_PASSWORD}
     networks:
       - pet-wearables-network
 

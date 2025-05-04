@@ -1,10 +1,12 @@
 package models
 
-import "time"
+import (
+	"time"
+
+)
 
 type CollarMetrics struct {
-	PetID       int64     `json:"pet_id"`
-	CollarID    string    `json:"collar_id"`
+	PetID       string `json:"pet_id"`
 	Temperature float64   `json:"temperature"`
 	HeartRate   int       `json:"heart_rate"`
 	Location    struct {
