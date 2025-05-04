@@ -27,3 +27,6 @@ go.work
 
 # PASSWD
 passwd
+
+# Other
+.idea

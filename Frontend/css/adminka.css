@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'SimpleDay';
+    src: url('../fonts/SimpleDay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SimpleDay', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 156px;
+    height: 156px;
+    object-fit: contain;
+}
+
+.logo-text {
+    text-align: left;
+}
+
+.clinic-name {
+    font-size: 48px;
+    color: #540032;
+    text-shadow: 0 4px 4px rgba(101, 8, 68, 0.25);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact {
+    font-size: 48px;
+    text-align: right;
+}
+
+.contact p {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-icon {
+    width: 100px;
+    height: 101px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #540032;
+    padding: 5px 0;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #3e0024;
+}
+
+.content-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.navigator {
+    display: flex;
+    justify-content: center; 
+    gap: 70px; 
+    margin-top: 60px; 
+}
+
+#square1, #square2 {
+    width: 420px;
+    height: 320px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px 0px rgba(21, 18, 115, 25%);
+    position: relative; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#square1 .square-image {
+    filter: drop-shadow(0px 5px 5px #AA4C83); 
+}
+
+#square2 .square-image {
+    filter: drop-shadow(0px 5px 5px #2C0443); 
+}
+
+.square-image {
+    position: absolute;
+    top: 40px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 150px; 
+    height: 150px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+
+}
+
+.square-content {
+    position: absolute;
+    left: 20px; 
+    bottom: 20px; 
+    text-align: left;
+    max-width: calc(100% - 40px); 
+}
+
+#square1 {
+    background: #DFBCD1;
+    margin-right: 40px; 
+    color: white;
+}
+
+#square2 {
+    background: #5C416B;
+    margin-left: 40px; 
+    color: white;
+}
+
+.square-content p {
+    font-size: 56px;
+    line-height: 1;
+    margin: 0; 
+    text-shadow: rgba(170, 76, 131, 1) 2px 5px;
+}
+
+.square-link {
+    text-decoration: none; 
+    display: block; 
+    color: inherit; 
+}
+
+.square-link:hover #square1,
+.square-link:hover #square2 {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0px 15px 15px 0px rgba(21, 18, 115, 35%);
+}
+
+#square1, #square2 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

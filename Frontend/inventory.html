@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инвентаризация лекарств ПИКМИ</title>
+    <link rel="stylesheet" href="css/inventory.css">
+    <link rel="stylesheet" href="css/Hompage.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="assets/images/clinic_logo.png" alt="Логотип клиники" class="logo-img">
+                <div class="logo-text">
+                    <div class="clinic-name">ВЕТЕРИНАРНАЯ<br>КЛИНИКА<br>ПИКМИ</div>
+                </div>
+            </div>
+            <div class="contact-container">
+                <div class="contact">
+                    <p>+7(913)6662233</p>
+                    <p>ул. Гурьевская 51</p>
+                    <p><a href="adminka.html">Админка</a></p>
+                </div>
+                <a href="#"><img src="assets/images/profile_icon.png" alt="Профиль" class="profile-icon"></a>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="appointment.html">Записаться</a>
+            <a href="my_pets.html">Мои питомцы</a>
+            <a href="forum-list.html">Наше сообщество</a>
+            <a href="chat.html">Консультация</a>
+        </nav>
+
+        <main class="inventory-main">
+            <h1>Инвентаризация лекарств</h1>
+            <div class="inventory-controls">
+                <button class="auto-order-btn">Включить автозаказ</button>
+                <div class="search-box">
+                    <input type="text" id="medicine-search" placeholder="Поиск лекарств...">
+                    <button onclick="searchMedicine()">Найти</button>
+                </div>
+            </div>
+            
+            <div class="inventory-table-container">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Количество</th>
+                            <th>Минимальный запас</th>
+                            <th>Статус</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Амоксициллин</td>
+                            <td>12</td>
+                            <td>20</td>
+                            <td class="warning">Недостаточно</td>
+                            <td><button class="order-btn">Заказать</button></td>
+                        </tr>
+                        <tr>
+                            <td>Цефтриаксон</td>
+                            <td>25</td>
+                            <td>15</td>
+                            <td class="ok">В норме</td>
+                            <td><button class="order-btn" disabled>Заказать</button></td>
+                        </tr>
+                        <tr>
+                            <td>Ибупрофен</td>
+                            <td>38</td>
+                            <td>40</td>
+                            <td class="warning">Недостаточно</td>
+                            <td><button class="order-btn">Заказать</button></td>
+                        </tr>
+                        <tr>
+                            <td>Парацетамол</td>
+                            <td>5</td>
+                            <td>10</td>
+                            <td class="ok">В норме</td>
+                            <td><button class="order-btn" disabled>Заказать</button></td>
+                        </tr>
+                        <tr>
+                            <td>Лоперамид</td>
+                            <td>52</td>
+                            <td>52</td>
+                            <td class="warning">Недостаточно</td>
+                            <td><button class="order-btn">Заказать</button></td>
+                        </tr>
+                        <tr>
+                            <td>Омепразол</td>
+                            <td>7</td>
+                            <td>7</td>
+                            <td class="ok">В норме</td>
+                            <td><button class="order-btn" disabled>Заказать</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+<!-- В конце body -->
+<script src="js/inventory.js"></script>
+</html>
