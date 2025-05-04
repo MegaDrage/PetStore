@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link rel="stylesheet" href="./assets/styles/modal.css" />
+
+    <title>PIKMI Мои питомцы </title>
+  </head>
+  <body>
+      <header>
+          <div class="header__logo-wrap">
+              <img src="./assets/img/free-icon-vet-8549933.png" alt="" srcset="" />
+          </div>
+          <div class="header__title">
+              ветеринарная <br> клиника  <br> пикми
+          </div>
+          <ul class="header__links-list">
+              <li class="">
+                  <a href="index.html">Записаться</a>
+              </li>
+              <li class="">
+                  <a href="options.html">Наше сообщество</a>
+              </li>
+              <li class="">
+                  <a href="types.html">Консультация</a>
+              </li>
+              <li class="">
+                  <a href="rate.html">Благотворительность</a>
+              </li>
+          </ul>
+          <p class="first-page__desc">
+              +7(913)6662223&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ул. Гурьевская 51
+          </p>
+          <div class="profil">
+              <a href="{% if user.is_authenticated %}/profile{% else %}/login{% endif %}">
+                  <img src="./assets/img/free-icon-profile-7310896.png"
+                       alt="{% if user.is_authenticated %}Profile{% else %}Login{% endif %}"
+                       class="profile-icon">
+              </a>
+          </div>
+      </header>
+
+
+      <main>
+          <div class="pets-header">
+              <a href="/" class="home-button">
+                  На главную страницу
+                  <img src="./assets/img/1946488.png" alt="" class="home-button-icon">
+              </a>
+          </div>
+
+
+          <div class="pets-container">
+              <div class="pets-scroll-wrapper">
+                  <!-- Список питомцев -->
+                  <div class="pets-list">
+
+                      <div class="pet-card" onclick="window.location.href='/pet/1'">
+                          <div class="pet-icon-circle">
+                              <img src="./assets/img/free-icon-toyger-cat-107975.png" alt="Кошка">
+                          </div>
+                          <div class="pet-info">
+                              <p><strong>Кличка:</strong> Боня </p>
+                              <p><strong>Вид:</strong> Кошка</p>
+                              <p><strong>Порода:</strong> Тайская</p>
+                              <p><strong>Чип:</strong> 123456789</p>
+                              <p><strong>Возраст:</strong> 3 года</p>
+                          </div>
+                          <button class="pet-profile-btn">Профиль</button>
+                      </div>
+
+                      <!-- Второй элемент питомца -->
+                      <div class="pet-card" onclick="window.location.href='/pet/2'">
+                          <div class="pet-icon-circle">
+                              <img src="./assets/img/free-icon-pets-12452249.png" alt="Собака">
+                          </div>
+                          <div class="pet-info">
+                              <p><strong>Кличка:</strong> Шарик </p>
+                              <p><strong>Вид:</strong> Собака</p>
+                              <p><strong>Порода:</strong> Лабрадор</p>
+                              <p><strong>Чип:</strong> 987654321</p>
+                              <p><strong>Возраст:</strong> 5 лет</p>
+                          </div>
+                          <button class="pet-profile-btn">Профиль</button>
+                      </div>
+                  </div>
+
+
+              </div>
+
+              <div class="add-pet-wrapper">
+                  <button class="add-pet-btn" onclick="window.location.href='/add-pet'">
+                      <div class="add-pet-icon-circle">
+                          <img src="./assets/img/free-icon-plus-3524388.png" alt="Добавить">
+                      </div>
+                      <span class="add-pet-label">Добавить питомца</span>
+                  </button>
+              </div>
+
+          </div>
+
+
+
+      </main>
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+      <script src="./assets/scripts/mypets_scripts.js"></script>
+
+  </body>
+  
+</html>
