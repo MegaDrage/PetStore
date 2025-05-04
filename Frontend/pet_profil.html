@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style_pet_profil.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+
+    <title>Ветеринарная клиника PIKMI Профиль моего питомца </title>
+</head>
+<body>
+    <header>
+        <div class="header__logo-wrap">
+            <img src="assets/images/clinic_logo.png" alt="" srcset="" />
+        </div>
+        <p class="header__title">
+            ВЕТЕРИНАРНАЯ КЛИНИКА ПИКМИ
+        </p>
+        <ul class="header__links-list">
+            <li class="">
+                <a href="appointment.html">Записаться</a>
+            </li>
+            <li class="">
+                <a href="forum-list.html">Наше сообщество</a>
+            </li>
+            <li class="">
+                <a href="chat.html">Консультация</a>
+            </li>
+            <li class="">
+                <a href="#">Благотворительность</a>
+            </li>
+        </ul>
+        <p class="first-page__desc">
+            +7(913)6662223  ул.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Гурьевская 51
+        </p>
+        <div class="profil">
+            <a href="{% if user.is_authenticated %}/profile{% else %}/login{% endif %}">
+                <img src="./assets/img/free-icon-profile-7310896.png"
+                     alt="{% if user.is_authenticated %}Profile{% else %}Login{% endif %}"
+                     class="profile-icon">
+            </a>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="pets-header-wrapper">
+            <a href="my_pets.html" class="home-button">
+                Мои питомцы
+                <img src="assets/images/home-image.png" alt="" class="home-button-icon">
+            </a>
+        </div>
+
+        <div class="pet-profile-container">
+            <!-- Левая колонка - профиль питомца -->
+            <div class="pet-profile">
+                <img src="assets/images/free-icon-toyger-cat-107975.png" alt="Фото питомца" class="pet-image">
+
+                <div class="pet-info">
+                    <div class="pet-info-item">
+                        <span class="pet-info-label">Кличка:</span>
+                        <span>Боня</span>
+                    </div>
+                    <div class="pet-info-item">
+                        <span class="pet-info-label">Порода:</span>
+                        <span>Тайская</span>
+                    </div>
+                    <div class="pet-info-item">
+                        <span class="pet-info-label">Чип:</span>
+                        <span>1234567890</span>
+                    </div>
+                    <div class="pet-info-item">
+                        <span class="pet-info-label">Возраст:</span>
+                        <span>3 года</span>
+                    </div>
+                </div>
+
+                <div class="sensor-data">
+                    <h3 class="sensor-title">
+                        <span>Показания с ошейника</span>
+                        <img src="assets/images/6462561.png" alt="">
+                    </h3>
+                    <div class="sensor-values">
+                        <div class="sensor-value">
+                            <span>Температура:</span>
+                            <span>38.5°C</span>
+                        </div>
+                        <div class="sensor-value">
+                            <span>Пульс:</span>
+                            <span>120 уд/мин</span>
+                        </div>
+                        <div class="sensor-value">
+                            <span>Дыхание:</span>
+                            <span>30 вдохов/мин</span>
+                        </div>
+                        <div class="sensor-value">
+                            <span>Активность:</span>
+                            <span>4.5 км</span>
+                        </div>
+                    </div>
+
+                    <div class="anomalies">
+                        <h3 class="anomalies-title">
+                            <span>Аномалии</span>
+                            <img src="assets/images/11083384.png" alt="">
+                        </h3>
+                        <div class="anomaly-item">Повышенная температура (38.5°C)</div>
+                        <div class="anomaly-item">Учащенный пульс (120 уд/мин)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка -->
+            <div class="right-column">
+                <div class="health-section">
+                    <h3 class="section-title">
+                        <span>Вакцинация</span>
+                        <img src="assets/images/free-icon-allergy-shots-13462496.png" alt="">
+                    </h3>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li>Комплексная (01.03.2023)</li>
+                            <li>Бешенство (01.03.2023)</li>
+                            <li>Лептоспироз (01.03.2023)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="health-section">
+                    <h3 class="section-title">
+                        <span>Аллергия</span>
+                        <img src="assets/images/free-icon-allergy-5376802.png" alt="">
+                    </h3>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li>Курица</li>
+                            <li>Пыльца березы</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="health-section">
+                    <h3 class="section-title">
+                        <span>Хронические заболевания</span>
+                        <img src="assets/images/free-icon-allergies-1546052.png" alt="">
+                    </h3>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li>Мочекаменная болезнь</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="appointment-button">
+                    <span>Записаться на приём</span>
+                    <img src="assets/images/73552.png" alt="">
+                </button>
+
+                <div class="recommendations">
+                    <h3 class="recommendations-title">
+                        <img src="assets/images/free-icon-thumbs-up-14884423.png" alt="">
+                        <span>Рекомендации</span>
+                    </h3>
+                    <p>У вашего питомца повышена температура. Рекомендуется увеличить потребление воды, обеспечить покой и наблюдать за состоянием. Если температура не снизится в течение суток, обратитесь к ветеринару.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="js/petsprofil_scripts.js"></script>
+</html>
