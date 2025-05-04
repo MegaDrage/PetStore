@@ -1,0 +1,21 @@
+doctrine_mongodb:
+    connections:
+        default:
+            server: 'mongodb://profile:ChangeMe@profile-db:27017'
+            options:
+                authSource: 'admin'
+    default_database: 'profile'
+    document_managers:
+        default:
+            auto_mapping: false
+            mappings:
+                Pet:
+                    is_bundle: false
+                    type: 'attribute'
+                    dir: '%kernel.project_dir%/src/Pet/Document'
+                    prefix: 'App\Pet\Document'
+                MedCard:
+                    is_bundle: false
+                    type: 'attribute'
+                    dir: '%kernel.project_dir%/src/MedCard/Document'
+                    prefix: 'App\MedCard\Document'
