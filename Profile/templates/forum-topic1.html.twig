@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ветеринарная клиника ПИКМИ</title>
-    <link rel="stylesheet" href="css/Hompage.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/Hompage.css') }}">
 </head>
 <body>
     <div class="container">
@@ -19,15 +19,21 @@
                 <div class="contact">
                     <p>+7(913)6662233</p>
                     <p>ул. Гурьевская 51</p>
-                    <p><a href="adminka.html">Админка</a></p>
+                    <p><a href="/adminka">Админка</a></p>
                 </div>
                 <a href="#"><img src="assets/images/profile_icon.png" alt="Профиль" class="profile-icon"></a>
             </div>
         </header>
+
+        <nav>
+            <a href="/">Главная</a>
+            <a href="appointment">Записаться</a>
+            <a href="my_pets">Мои питомцы</a>
+            <a href="forum_list">Наше сообщество</a>
+            <a href="chat">Консультация</a>
+        </nav>
     
     <div class="container">
-        <a href="forum-list.html" class="back-link">← Назад к списку тем</a>
-        
         <div class="topic-container">
             <div class="topic-header">
                 <h1 class="topic-title">Репродуктивные заболевания кошек/собак</h1>
