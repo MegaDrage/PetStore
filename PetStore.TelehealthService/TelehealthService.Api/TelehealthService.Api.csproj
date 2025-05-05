@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.1.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TelehealthService.AI\TelehealthService.AI.csproj" />
+      <ProjectReference Include="..\TelehealthService.Chat\TelehealthService.Chat.csproj" />
+      <ProjectReference Include="..\TelehealthService.Core\TelehealthService.Core.csproj" />
+      <ProjectReference Include="..\TelehealthService.JitsiIntegration\TelehealthService.JitsiIntegration.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Prompts.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Prompts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Prompts.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Prompts.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

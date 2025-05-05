@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B5F2710-6D14-432C-A46B-74FF7AE44A6B}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelehealthService.Core", "TelehealthService.Core\TelehealthService.Core.csproj", "{306EF516-7EB6-4A33-98F2-2222B338559E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelehealthService.Api", "TelehealthService.Api\TelehealthService.Api.csproj", "{9A1ACD85-4F39-4F21-80BD-D38FAD123778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelehealthService.JitsiIntegration", "TelehealthService.JitsiIntegration\TelehealthService.JitsiIntegration.csproj", "{4ECC978E-97FA-494C-8CCE-633C3150CF79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelehealthService.AI", "TelehealthService.AI\TelehealthService.AI.csproj", "{9E130718-9C39-4EB9-87E0-862E04F0D4AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelehealthService.Chat", "TelehealthService.Chat\TelehealthService.Chat.csproj", "{6B3C9C83-1B3B-4491-8C32-341CFA3D8F20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{306EF516-7EB6-4A33-98F2-2222B338559E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306EF516-7EB6-4A33-98F2-2222B338559E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306EF516-7EB6-4A33-98F2-2222B338559E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306EF516-7EB6-4A33-98F2-2222B338559E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1ACD85-4F39-4F21-80BD-D38FAD123778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1ACD85-4F39-4F21-80BD-D38FAD123778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1ACD85-4F39-4F21-80BD-D38FAD123778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1ACD85-4F39-4F21-80BD-D38FAD123778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECC978E-97FA-494C-8CCE-633C3150CF79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECC978E-97FA-494C-8CCE-633C3150CF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECC978E-97FA-494C-8CCE-633C3150CF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECC978E-97FA-494C-8CCE-633C3150CF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E130718-9C39-4EB9-87E0-862E04F0D4AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E130718-9C39-4EB9-87E0-862E04F0D4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E130718-9C39-4EB9-87E0-862E04F0D4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E130718-9C39-4EB9-87E0-862E04F0D4AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3C9C83-1B3B-4491-8C32-341CFA3D8F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3C9C83-1B3B-4491-8C32-341CFA3D8F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3C9C83-1B3B-4491-8C32-341CFA3D8F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3C9C83-1B3B-4491-8C32-341CFA3D8F20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
